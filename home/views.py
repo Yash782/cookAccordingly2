@@ -21,14 +21,16 @@ def index(request):
         selectedIngs = request.POST.getlist('selectedIngs')
         print(selectedIngs)
 
-        
+        recipes = Recipes.objects.filter(Iname__in=selectedIngs)
+
+        # Print the names of the matching recipes
+        for recipe in recipes:
+            print(recipe.Rname)
 
         # Temporayly returing to home page even after selecting ingridents
         # Have to change to recipe page
         return render(request, 'index.html', {'ings': ings})
         
-
-    
     return render(request, 'index.html', {'ings' : ings})
 
 def recipes(request):
@@ -39,8 +41,10 @@ def recipes(request):
     # To search for recipes from recipes page
     if 'q' in request.GET:
         q = request.GET['q']
-        recs = Recipes.objects.filter (Q(name__icontains=q))
-    
-    
+        recs = Recipes.objects.filter (Q(name__icontains=q)) 
     
     return render(request, 'recipes.html', {'recs': recs})
+
+
+def singlerecipe(request):
+    return render(request, 'single-recipe.html')

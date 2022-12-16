@@ -1,13 +1,64 @@
 {% extends 'base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>This is recipe page</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes || Final</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    <link rel="stylesheet" href="/static/css/normalize.css" />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="/static/css/main.css" />
+  </head>
+  <body>
+    {% block list %} 
+    <!-- main -->
+    <main class="page">
+      <section class="recipes-container">
+        <!-- tag container -->
+        <div class="tags-container">
+          <h4>recipes</h4>
+          <div class="tags-list">
+            <a href="tag-template.html">Beef (1)</a>
+            <a href="tag-template.html">Breakfast (2)</a>
+            <a href="tag-template.html">Carrots (3)</a>
+            <a href="tag-template.html">Food (4)</a>
+          </div>
+        </div>
+        <!-- end of tag container -->
+        <!-- recipes list -->
+        <div class="recipes-list">
+          {% for rec in recs  %}
+          <!-- single recipe -->
+          <a href="/single-recipe" class="recipe">
+           {% if rec.Rimg != 'NULL' %}
+            <img
+              src="/media/{{rec.Rimg}}"
+              class="img recipe-img"
+              alt="This is image of {{rec.Rname}}"
+            />
+            {% endif %}
+            
+            <h5>{{rec.Rname}}</h5>
+            <p>Category = {{rec.Rtype}}</p>
+          </a>
+          <!-- end of single recipe -->
+          {% endfor %}
+          
+        </div>
+      </section>
+    </main>
+    <!-- end of main -->
+    <script src="/static/js/app.js"></script>
+    {% endblock list %}
+  </body>
 </html>

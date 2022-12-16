@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,51 +11,47 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon" />
+    <!-- normalize -->
+    {% load static %}
+    <link rel="stylesheet" href="/static/css/normalize.css"/>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <!-- main css -->
+    <link rel="stylesheet" href="/static/css/main.css" />
     <title>Cook Accordingly</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Cook Accordingly</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="/"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/recipes">Recipes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="Search"
-            name = "q"
-            placeholder="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
-    {% block list %} {% endblock list %}
+        <!-- nav  -->
+        <nav class="navbar">
+          <div class="nav-center">
+            <div class="nav-header">
+              <a href="index.html" class="nav-logo">
+                <img src="/static/assets/logo-no-background.png" alt="Cook Accordingly" />
+              </a>
+              <button class="nav-btn btn">
+                <i class="fas fa-align-justify"></i>
+              </button>
+            </div>
+            <div class="nav-links">
+              <a href="/" class="nav-link"> home </a>
+              <a href="/recipes" class="nav-link"> recipes </a>
+              <div class="nav-link contact-link">
+                <input
+                type="search"
+                name = "q"
+                placeholder="Search"
+              />
+              <button type="" class="btn btn-primary">Search</button>
+              </div>
+            </div>
+          </div>
+        </nav>   
+      {% block list %} {% endblock list %}
+      {% block singlerecie %} {% endblock singlerecie %}        
     
   </body>
 </html>

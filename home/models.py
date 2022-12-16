@@ -23,7 +23,7 @@ class Ingredients(models.Model):
 
 class Recipes(models.Model):
     Rname = models.CharField(max_length=100)
-    Rimg = models.ImageField(upload_to='photos')
+    Rimg = models.ImageField(null=True, blank= True, upload_to='photos')
     Rdesc = models.TextField()
     Iname = models.ManyToManyField(Ingredients)
     Rtypes = (
