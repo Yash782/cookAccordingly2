@@ -29,13 +29,7 @@ def recipes(request):
 
     #When user submits the ingredients
     if request.method == 'POST':
-    
-        q = request.POST['q']
-        recs = Recipes.objects.filter (Q(Rname__icontains=q))
-
-        # Redirect to recipe page with searched recipe
-        return render(request, 'recipes.html', {'recs': recs})
-
+        
         #list of user selected ingredients
         selectedIngs = request.POST.getlist('selectedIngs')
         if selectedIngs == '':
@@ -73,8 +67,14 @@ def recipes(request):
     return render(request, 'recipes.html', {'recs': recs})
     
     
-def singlerecipe(request):
-    recipes = Recipes.objects.all()
+def singlerecipe(request, recipe_id):
+    recipe = Recipes.objects.get(pk = recipe_id)
 
-    return render(request, 'single-recipe.html', {'recipes': recipes})
 
+    return render(request, 'single-recipe.html', {'recipe': recipe})
+
+def recipedetails(request, recipe_id):
+
+    recipe = Recipes.objects.get(pk = recipe_id)
+
+    return render(request, 'recipedetails.html', {'recipe': recipe})

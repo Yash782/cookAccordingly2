@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% url 'recipedetails.html' %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,7 +39,7 @@
         <div class="recipes-list">
           {% for rec in recs  %}
           <!-- single recipe -->
-          <a href="/single-recipe/" class="recipe">
+          <a href="{% url 'single-recipe' rec.id %}" class="recipe">
            {% if rec.Rimg != 'NULL' %}
             <img
               src="/media/{{rec.Rimg}}"
