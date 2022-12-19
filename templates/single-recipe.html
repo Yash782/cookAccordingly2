@@ -22,22 +22,18 @@
     {% block singlerecie %} 
     <main class="page">
       <div class="recipe-page">
+      {% for recipe in recipes %}
+
         <section class="recipe-hero">
           <img
-            src="./assets/recipes/recipe-4.jpeg"
+            src= "/media/{{recipe.Rimg}}"
             class="img recipe-hero-img"
           />
           <article class="recipe-info">
-            <h2>Banana Pancakes</h2>
+            
+            <h2>{{ recipe.Rname }}</h2>
             <p>
-              Shabby chic humblebrag banh mi bushwick, banjo kale chips
-              meggings. Cred selfies sartorial, cloud bread disrupt blue bottle
-              seitan. Dreamcatcher tousled bitters, health goth vegan venmo
-              whatever street art lyft shabby chic pitchfork beard. Drinking
-              vinegar poke tbh, iPhone coloring book polaroid truffaut tousled
-              ramps pug trust fund letterpress. Portland four loko austin
-              chicharrones bitters single-origin coffee. Leggings letterpress
-              occupy pour-over.
+              {{ recipe.Rdesc}}
             </p>
             <div class="recipe-icons">
               <article>
@@ -57,9 +53,8 @@
               </article>
             </div>
             <p class="recipe-tags">
-              Tags : <a href="tag-template.html">beef</a>
-              <a href="tag-template.html">breakfast</a>
-              <a href="tag-template.html">pancakes</a>
+              Tags : <a href="tag-template.html">Pohe</a>
+              <a href="tag-template.html">Breakfast</a>
               <a href="tag-template.html">food</a>
             </p>
           </article>
@@ -75,8 +70,7 @@
                 <div></div>
               </header>
               <p>
-                I'm baby mustache man braid fingerstache small batch venmo
-                succulents shoreditch.
+                Wash and soak poha in water for 10 minutes, until they are soft. Drain and keep aside.
               </p>
             </div>
             <!-- end of single instruction -->
@@ -109,7 +103,7 @@
           <article class="second-column">
             <div>
               <h4>ingredients</h4>
-              <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
+              <p class="single-ingredient">Pohe</p>
               <p class="single-ingredient">1/2 cup flax seed meal</p>
               <p class="single-ingredient">1 cup skim milk</p>
             </div>
@@ -121,7 +115,9 @@
               <p class="single-tool">Measuring Cups</p>
             </div>
           </article>
+          
         </section>
+        {% endfor %}
       </div>
     </main>
     {% endblock singlerecie %}     

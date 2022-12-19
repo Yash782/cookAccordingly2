@@ -29,7 +29,7 @@
         <nav class="navbar">
           <div class="nav-center">
             <div class="nav-header">
-              <a href="index.html" class="nav-logo">
+              <a href="/" class="nav-logo">
                 <img src="/static/assets/logo-no-background.png" alt="Cook Accordingly" />
               </a>
               <button class="nav-btn btn">
@@ -39,6 +39,9 @@
             <div class="nav-links">
               <a href="/" class="nav-link"> home </a>
               <a href="/recipes" class="nav-link"> recipes </a>
+
+            <form action="/recipes/" method="post">
+              {% csrf_token %}
               <div class="nav-link contact-link">
                 <input
                 type="search"
@@ -46,6 +49,7 @@
                 placeholder="Search"
               />
               <button type="" class="btn btn-primary">Search</button>
+            </form>
               </div>
             </div>
           </div>

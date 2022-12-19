@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 
 class Ingredients(models.Model):
-    Iname = models.CharField(max_length=50)
+    ingredientname = models.CharField(max_length=50)
     Itypes = (
         ('Dairy', 'Dairy'),
         ('Fruits', 'Fruits'),
         ('Vegetables', 'Vegetables'),
-        ('Speces', 'Speces'),
+        ('Spices', 'Spices'),
         ('Nuts and Oil', 'Nuts and Oil Seeds'),
         ('Lentils', 'Lentils'),
         ('Cereals', 'Cereals'),
@@ -19,16 +19,17 @@ class Ingredients(models.Model):
     )
     Itype = models.CharField(max_length=50, choices=Itypes)
     def __str__(self):
-        return self.Iname
+        return self.ingredientname
 
 class Recipes(models.Model):
     Rname = models.CharField(max_length=100)
     Rimg = models.ImageField(null=True, blank= True, upload_to='photos')
     Rdesc = models.TextField()
-    Iname = models.ManyToManyField(Ingredients)
+    ingredientname = models.ManyToManyField(Ingredients)
     Rtypes = (
         ('Breakfast', 'Breakfast'),
-        ('Meals', 'Meals')
+        ('Meals', 'Meals'),
+        ('Dessert', 'Dessert'),
     )
     Rtype = models.CharField(max_length=20, choices=Rtypes)
     def __str__(self):
