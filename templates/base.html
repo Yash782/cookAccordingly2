@@ -40,13 +40,13 @@
               <a href="/" class="nav-link"> home </a>
               <a href="/recipes" class="nav-link"> recipes </a>
 
-            <form action="/recipes/" method="post">
+            <form action="" method="POST">
               {% csrf_token %}
               <div class="nav-link contact-link">
                 <input
                 type="search"
                 name = "q"
-                placeholder="Search"
+                placeholder="Search For Recipes"
               />
               <button type="" class="btn btn-primary">Search</button>
             </form>

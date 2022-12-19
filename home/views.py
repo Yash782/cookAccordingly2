@@ -13,8 +13,8 @@ def index(request):
     selectedIngs = request.POST.getlist('selectedIngs')
 
     # Code for searching Recipes by name on index page
-    if 'q' in request.GET:
-        q = request.GET['q']
+    if request.method == 'POST':
+        q = request.POST['q']
         recs = Recipes.objects.filter (Q(Rname__icontains=q))
 
         # Redirect to recipe page with searched recipe
@@ -29,6 +29,12 @@ def recipes(request):
 
     #When user submits the ingredients
     if request.method == 'POST':
+    
+        q = request.POST['q']
+        recs = Recipes.objects.filter (Q(Rname__icontains=q))
+
+        # Redirect to recipe page with searched recipe
+        return render(request, 'recipes.html', {'recs': recs})
 
         #list of user selected ingredients
         selectedIngs = request.POST.getlist('selectedIngs')
@@ -53,7 +59,7 @@ def recipes(request):
                 #Searching for Recipe name from ingredient id
                 #This query was converted from SQL to Django
         for y in range(x):
-            recipe_ids = Recipes.objects.filter(ingredientname=ingId).values().all()#.distinct()
+            recipe_ids = Recipes.objects.filter(ingredientname=ingId).values().all().distinct()
             #print(recipe_ids)
             listToDisplay = [recipe_ids]
 
