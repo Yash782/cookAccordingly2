@@ -71,6 +71,7 @@ def singlerecipe(request, recipe_id):
     recipe = Recipes.objects.get(pk = recipe_id)
 
 
+
     return render(request, 'single-recipe.html', {'recipe': recipe})
 
 def recipedetails(request, recipe_id):
