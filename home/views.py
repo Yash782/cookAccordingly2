@@ -79,3 +79,5 @@ def recipedetails(request, recipe_id):
     recipe = Recipes.objects.get(pk = recipe_id)
 
     return render(request, 'recipedetails.html', {'recipe': recipe})
+
+print('hello')
